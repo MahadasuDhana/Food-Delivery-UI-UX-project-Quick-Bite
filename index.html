@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickBite - Food Delivery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="logo" href="#">Quick<span>Bite</span></a>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#restaurants">Restaurants</a>
+      <a href="#offers">Offers</a>
+      <a href="#about">About</a>
+    </nav>
+    <button class="cart-btn" id="cartBtn">Cart <span id="cartCount">0</span></button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p class="eyebrow">FAST • FRESH • LOCAL</p>
+        <h1>Your favorite food,<br><span>delivered fast.</span></h1>
+        <p class="hero-text">Discover local restaurants, order your favorites, and track your meal from kitchen to doorstep.</p>
+        <div class="search-box">
+          <span>⌕</span>
+          <input id="searchInput" type="text" placeholder="Search for dishes or restaurants">
+          <button onclick="searchFood()">Search</button>
+        </div>
+        <div class="quick-links">
+          <button onclick="filterCategory('Pizza')">🍕 Pizza</button>
+          <button onclick="filterCategory('Burgers')">🍔 Burgers</button>
+          <button onclick="filterCategory('Indian')">🍛 Indian</button>
+          <button onclick="filterCategory('Desserts')">🍰 Desserts</button>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="delivery-badge">⚡ 25–35 min</div>
+        <div class="food-emoji">🍕</div>
+        <h3>Hot & fresh</h3>
+        <p>From trusted local kitchens</p>
+      </div>
+    </section>
+
+    <section class="section" id="restaurants">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">EXPLORE</p>
+          <h2>Popular restaurants</h2>
+        </div>
+        <button class="text-btn" onclick="showAll()">View all →</button>
+      </div>
+      <div class="categories" id="categories"></div>
+      <div class="restaurant-grid" id="restaurantGrid"></div>
+    </section>
+
+    <section class="offers section" id="offers">
+      <div>
+        <p class="eyebrow">TODAY'S DEAL</p>
+        <h2>Get 20% off your first order</h2>
+        <p>Use code <strong>QUICK20</strong> at checkout.</p>
+      </div>
+      <button class="primary-btn" onclick="document.getElementById('restaurants').scrollIntoView({behavior:'smooth'})">Order now</button>
+    </section>
+
+    <section class="section about" id="about">
+      <p class="eyebrow">ABOUT THE PROJECT</p>
+      <h2>Designed around the user</h2>
+      <div class="about-grid">
+        <div><strong>01</strong><h3>Discover</h3><p>Simple search and category navigation help users find food quickly.</p></div>
+        <div><strong>02</strong><h3>Choose</h3><p>Clear restaurant cards show ratings, delivery time and cuisine at a glance.</p></div>
+        <div><strong>03</strong><h3>Order</h3><p>A focused cart and checkout flow reduces unnecessary steps.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal hidden" id="cartModal">
+    <div class="modal-card">
+      <button class="close" onclick="closeCart()">×</button>
+      <h2>Your cart</h2>
+      <div id="cartItems"></div>
+      <div class="cart-total"><span>Total</span><strong id="cartTotal">₹0</strong></div>
+      <button class="primary-btn full" onclick="checkout()">Proceed to checkout</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <footer><p>QuickBite • UI/UX Case Study • Built with HTML, CSS & JavaScript</p></footer>
+  <script src="js/app.js"></script>
+</body>
+</html>
